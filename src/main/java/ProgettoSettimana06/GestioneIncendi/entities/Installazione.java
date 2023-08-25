@@ -32,34 +32,45 @@ public class Installazione extends Publisher implements Subscriber {// Subscribe
 		this.sondeAssociate.forEach(sonda -> {
 			switch (sonda.getSmokeLevel()) {
 			case 6:
-				this.messaggioDaInviareAlCentroControllo = "Segnalazione di leggero aumento di fumo. Monitorare attentamente la situazione.";
+				System.err.println(
+						"Segnalazione di leggero aumento di fumo. Monitorare attentamente la situazione. Sonda id = "
+								+ sonda.getId());
 				break;
 			case 7:
-				this.messaggioDaInviareAlCentroControllo = "Incremento del fumo rilevato. Verificare possibili fonti d'incendio.";
+				System.err.println("Incremento del fumo rilevato. Verificare possibili fonti d'incendio. Sonda id = "
+						+ sonda.getId());
+
 				break;
 			case 8:
-				this.messaggioDaInviareAlCentroControllo = "Fumo significativo in aumento. Preparare risorse per intervento.";
+				System.err.println(
+						"Fumo significativo in aumento. Preparare risorse per intervento. Sonda id = " + sonda.getId());
 				break;
 			case 9:
-				this.messaggioDaInviareAlCentroControllo = "Fumo denso e sospetto. Mobilitare squadre di emergenza e risorse.";
+				System.err.println("Fumo denso e sospetto. Mobilitare squadre di emergenza e risorse. Sonda id = "
+						+ sonda.getId());
+
 				break;
 			case 10:
-				this.messaggioDaInviareAlCentroControllo = "Situazione critica: fumo intenso. Attivare procedure di evacuazione e intervento immediato.";
+				System.err.println(
+						"Situazione critica: fumo intenso. Attivare procedure di evacuazione e intervento immediato. Sonda id = "
+								+ sonda.getId());
+
 				break;
 			default:
-				this.messaggioDaInviareAlCentroControllo = "Situazione stabile";
+				System.err.println("Situazione stabile. Sonda id = "+sonda.getId());
 
 			}
-			this.centroControllo.receiveUpdateFromInstallazione(this.id, sonda.getId(), sonda.getLatitude(),
-					sonda.getLongitude(), sonda.getSmokeLevel(), this.messaggioDaInviareAlCentroControllo);
+
 		});
 
 	}
 
 	@Override
 	public void receiveUpdateFromSonda(int idSonda, String latitude, String longitude, int smokeLevel) {
-		this.centroControllo.receiveUpdateFromInstallazione(this.id, idSonda, latitude, longitude, smokeLevel,
+		if (smokeLevel > 5) {
+			this.centroControllo.receiveUpdateFromInstallazione(this.id, idSonda, latitude, longitude, smokeLevel,
 				this.messaggioDaInviareAlCentroControllo);
+		}
 
 	}
 

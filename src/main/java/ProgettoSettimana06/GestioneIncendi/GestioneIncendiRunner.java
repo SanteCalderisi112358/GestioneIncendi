@@ -20,6 +20,7 @@ public class GestioneIncendiRunner implements CommandLineRunner {
 		Faker f = new Faker();
 
 		/* Inizializzo 9 Sonde con un id numerico e coordinate random mediante Faker */
+
 		Sonda sonda01 = new Sonda(f.number().numberBetween(1000, 9999), f.address().latitude(),
 				f.address().longitude());
 		Sonda sonda02 = new Sonda(f.number().numberBetween(1000, 9999), f.address().latitude(),
@@ -87,49 +88,52 @@ public class GestioneIncendiRunner implements CommandLineRunner {
 		installazioniCentroControllo.add(installazione03);
 		centroControllo.setInstallazioniAssociate(installazioniCentroControllo);
 
-		/* Genero 3 valori random tra 1 e 10 con Faker */
-
-//		int smokeLevelRandom01 = f.number().numberBetween(1, 10);
-//		System.err.println(smokeLevelRandom01);
-//		int smokeLevelRandom02 = f.number().numberBetween(1, 10);
-//		System.err.println(smokeLevelRandom02);
-//		int smokeLevelRandom03 = f.number().numberBetween(1, 10);
-//		System.err.println(smokeLevelRandom03);
 
 		/*
-		 * Faccio un set di smokeLevel a 3 sonde random delle 3 List<Sonda>
-		 * precedentemente create
+		 * Faccio un set di smokeLevel alle sonde delle 3 List<Sonda> con valori di fumo
+		 * random
+		 * 
 		 */
 
-//		sondeInstallazione01.get(f.number().numberBetween(0, sondeInstallazione01.size()))
-//				.setSmokeLevel(smokeLevelRandom01);
-//		sondeInstallazione02.get(f.number().numberBetween(0, sondeInstallazione02.size()))
-//				.setSmokeLevel(smokeLevelRandom02);
-//		sondeInstallazione03.get(f.number().numberBetween(0, sondeInstallazione03.size()))
-//				.setSmokeLevel(smokeLevelRandom03);
+		sondeInstallazione01.forEach(sonda -> {
+			sonda.setSmokeLevel(f.number().numberBetween(1, 10));
+			sonda.makeAnnouncment();
+			System.err.println("**********");
+			installazione01.makeAnnouncment();
+			System.err.println("**********");
 
-		// installazione01.makeAnnouncment();
-		// System.err.println(installazione01.getMessaggioDaInviareAlCentroControllo().toString());
-
-
-//		System.err.println(sondeInstallazione02);
-//		System.err.println(sondeInstallazione03);
-
-		// System.err.println(centroControllo.toString());
-		sonda01.setSmokeLevel(7);
-		sonda02.setSmokeLevel(8);
-		sonda03.setSmokeLevel(4);
-		System.err.println(sonda01);
-		System.err.println(sonda02);
-		System.err.println(sonda03);
-		sonda01.makeAnnouncment();
-		sonda02.makeAnnouncment();
-		sonda03.makeAnnouncment();
-		installazione01.makeAnnouncment();
-		System.err.println(installazione01);
-		centroControllo.getInstallazioniAssociate().forEach(cc -> {
-			System.err.println(cc.getMessaggioDaInviareAlCentroControllo());
 		});
+
+		sondeInstallazione02.forEach(sonda -> {
+			sonda.setSmokeLevel(f.number().numberBetween(1, 10));
+			sonda.makeAnnouncment();
+			System.err.println("**********");
+			installazione02.makeAnnouncment();
+			System.err.println("**********");
+
+		});
+
+		sondeInstallazione03.forEach(sonda -> {
+			sonda.setSmokeLevel(f.number().numberBetween(1, 10));
+			sonda.makeAnnouncment();
+			System.err.println("**********");
+			installazione03.makeAnnouncment();
+			System.err.println("**********");
+
+		});
+
+//		sonda01.setSmokeLevel(7);
+//		sonda02.setSmokeLevel(8);
+//		sonda03.setSmokeLevel(4);
+//		System.err.println(sonda01);
+//		System.err.println(sonda02);
+//		System.err.println(sonda03);
+//		sonda01.makeAnnouncment();
+//		sonda02.makeAnnouncment();
+//		sonda03.makeAnnouncment();
+//		installazione01.makeAnnouncment();
+
+
 	}
 
 

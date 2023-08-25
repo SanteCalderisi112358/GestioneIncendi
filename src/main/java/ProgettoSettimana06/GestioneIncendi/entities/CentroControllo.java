@@ -29,13 +29,13 @@ public class CentroControllo implements Subscriber {// Subscriber di Installazio
 	@Override
 	public void receiveUpdateFromInstallazione(int idInstallazione, int idSonda, String latitude, String longitude,
 			int smokeLevel, String messaggio) {
-		// TODO Auto-generated method stub
+		System.err.println("Id Installazione = " + idInstallazione);
+		System.err.println("http://host/alarm?=idSonda=[" + idSonda + "]&lat=[" + latitude + "]&lon=[" + longitude
+				+ "]&smokelevel=[" + smokeLevel + "]");
 
 	}
 
-	public void makeMessage() {
 
-	}
 
 
 	@Override
