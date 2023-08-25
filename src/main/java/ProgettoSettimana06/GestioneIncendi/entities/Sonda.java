@@ -23,6 +23,7 @@ public class Sonda extends Publisher { // Publisher
 	public void addSubscriber(Subscriber subscriber) {
 		this.installazioneSubscriber = subscriber;
 
+
 	}
 
 	@Override
@@ -33,7 +34,7 @@ public class Sonda extends Publisher { // Publisher
 
 	@Override
 	public void makeAnnouncment() {
-		this.installazioneSubscriber.receiveUpdate(id, latitude, longitude, smokeLevel);
+		this.installazioneSubscriber.receiveUpdateFromSonda(id, latitude, longitude, smokeLevel);
 
 	}
 
