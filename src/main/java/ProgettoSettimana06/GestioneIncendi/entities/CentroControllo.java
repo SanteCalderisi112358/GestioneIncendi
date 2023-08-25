@@ -33,6 +33,7 @@ public class CentroControllo implements Subscriber {// Subscriber di Installazio
 		System.err.println("http://host/alarm?=idSonda=[" + idSonda + "]&lat=[" + latitude + "]&lon=[" + longitude
 				+ "]&smokelevel=[" + smokeLevel + "]");
 
+
 	}
 
 

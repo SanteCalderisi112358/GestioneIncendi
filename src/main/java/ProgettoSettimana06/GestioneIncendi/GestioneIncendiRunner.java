@@ -98,20 +98,17 @@ public class GestioneIncendiRunner implements CommandLineRunner {
 		sondeInstallazione01.forEach(sonda -> {
 			sonda.setSmokeLevel(f.number().numberBetween(1, 10));
 			sonda.makeAnnouncment();
-			System.err.println("**********");
 			installazione01.makeAnnouncment();
-			System.err.println("**********");
 
 		});
-
+		System.err.println("**********");
 		sondeInstallazione02.forEach(sonda -> {
 			sonda.setSmokeLevel(f.number().numberBetween(1, 10));
 			sonda.makeAnnouncment();
-			System.err.println("**********");
 			installazione02.makeAnnouncment();
-			System.err.println("**********");
 
 		});
+		System.err.println("**********");
 
 		sondeInstallazione03.forEach(sonda -> {
 			sonda.setSmokeLevel(f.number().numberBetween(1, 10));

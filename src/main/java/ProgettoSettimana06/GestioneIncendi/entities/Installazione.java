@@ -55,6 +55,7 @@ public class Installazione extends Publisher implements Subscriber {// Subscribe
 						"Situazione critica: fumo intenso. Attivare procedure di evacuazione e intervento immediato. Sonda id = "
 								+ sonda.getId());
 
+
 				break;
 			default:
 				System.err.println("Situazione stabile. Sonda id = "+sonda.getId());
